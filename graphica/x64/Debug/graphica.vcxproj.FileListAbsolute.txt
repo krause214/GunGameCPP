@@ -1,0 +1,2 @@
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\x64\Debug\graphica.exe
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\x64\Debug\graphica.pdb

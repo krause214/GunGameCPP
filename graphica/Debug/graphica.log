@@ -1,2 +1,4 @@
 ﻿  Source.cpp
-  graphica.vcxproj -> C:\Users\andro\Documents\GitHub\summerPractice\graphica\Debug\graphica.exe
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Source.cpp(9,28): error C2664: "BOOL SetConsoleTitleW(LPCWSTR)": невозможно преобразовать аргумент 1 из "const char [9]" в "LPCWSTR"
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Source.cpp(9,18): message : Типы, на которые указывают указатели, не связаны; для преобразования требуется reinterpret_cast, приведение в стиле С или приведение в стиле функции
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\consoleapi2.h(510,1): message : см. объявление "SetConsoleTitleW"
