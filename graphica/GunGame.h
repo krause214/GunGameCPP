@@ -7,15 +7,17 @@
 #include "Sphere.h"
 
 
-//////////////   BOLL    ///////////////////
+//////////////   BOLL   ///////////////////
 class Boll
 {
 public:
 	Boll(int);
 	~Boll();
+	void enemyBollSpawn(int);
 
 private:
 	int bollSize = 0;
+	Sphere *enemySphiere;
 
 };
 
@@ -26,6 +28,26 @@ Boll::Boll(int size)
 
 Boll::~Boll()
 {
+}
+//спавн вражеских шаров
+void Boll::enemyBollSpawn(int amount) {
+	Sphere* enemy = new Sphere[amount];
+	int j = 0;
+	int x = rand() % Graphics::GetWid() - Graphics::GetWid() / 2;
+	int y = rand() % Graphics::GetHeg() - Graphics::GetHeg() / 2;
+	int rad = 10 + rand() % 40;
+	for (int i = 0; i < amount; i++)
+	{
+		while ( (x < Graphics::GetWid() + 100 && x > Graphics::GetWid() - 100)
+			|| (y < Graphics::GetHeg() + 100 && y > Graphics::GetHeg() - 100) ) {
+			x = rand() % Graphics::GetWid() - Graphics::GetWid() / 2;
+			y = rand() % Graphics::GetHeg() - Graphics::GetHeg() / 2;
+		}
+		enemy[j] = Sphere(x, y, rad);
+	}
+	enemySphiere = enemy;
+
+	Sphere::VisSphere(enemySphiere, amount);
 }
 
 /////////////////////    GUN    /////////////////////////
@@ -42,6 +64,7 @@ private:
 	int angle;
 };
 
+//спавн пушки
 Gun::Gun(int angle, int force, int xz, int yz)
 {
 	this->angle = angle;
@@ -49,8 +72,8 @@ Gun::Gun(int angle, int force, int xz, int yz)
 
 	for (int i = 0; i < 7; i++)
 	{
-		pt[i].x = pt[i].x + xz;
-		pt[i].y = pt[i].y + yz;
+		pt[i].x = pt[i].x * 2 + xz;
+		pt[i].y = pt[i].y * 2 + yz;
 	}
 
 	Graphics::Set_pen(RGB(0, 255, 0), 3);

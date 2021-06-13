@@ -29,9 +29,9 @@ Sphere::Sphere()
 	int wid = Graphics::GetWid();
 	int heg = Graphics::GetHeg();
 	Sleep(10);
-	ctr.x = rand()%wid - wid/2;
+	ctr.x = rand()%(wid+1) - wid/2;
 	Sleep(10);
-	ctr.y = rand()%heg - heg/2;
+	ctr.y = rand()%(heg+1) - heg/2;
 
 	R = 20. + rand() % 50;
 }

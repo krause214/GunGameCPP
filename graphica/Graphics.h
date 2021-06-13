@@ -35,8 +35,8 @@ public:
 HBRUSH Graphics::hBrush = NULL;
 HPEN Graphics::hPen = NULL;
 HDC Graphics::dc = NULL;
-int Graphics::wid = 0;
-int Graphics::heg = 0;
+int Graphics::wid = 1;
+int Graphics::heg = 1;
 
 void Graphics::InitGraphics(HWND hWnd)
 {

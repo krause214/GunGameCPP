@@ -14,12 +14,12 @@ int main()
 
 	Graphics::InitGraphics(hWnd);
 	Sleep(50);
-
-	//----------------ћетоды класса Graphics---------------------
-
 	int wid = Graphics::GetWid();
 	int heg = Graphics::GetHeg();
 
+	int amountOfEnemyBolls;
+	cout << "¬ведите количество вражеских шаров: ";
+	cin >> amountOfEnemyBolls;
 
 	Sphere sp(0, 0, 10);
 	Sphere::VisSphere(&sp, 1);
@@ -28,10 +28,12 @@ int main()
 
 	Gun gun(0, 0, wid/2, heg/2);
 
+	Boll boll(1);
+	boll.enemyBollSpawn(amountOfEnemyBolls);
+
 	Graphics::Osi();
 
 
 	cin.get();
-	
 	return 0;
 }
