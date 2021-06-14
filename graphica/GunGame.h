@@ -67,11 +67,18 @@ private:
 //спавн пушки
 Gun::Gun(int angle, int force, int xz, int yz)
 {
+	Vector v;
+	Matrix rote;
+	rote.Rotate(angle);
+
 	this->angle = angle;
 	this->force = force;
 
 	for (int i = 0; i < 7; i++)
 	{
+		v = rote * Vector(pt[i].x, pt[i].y);
+		pt[i].x = v[0];
+		pt[i].y = v[1];
 		pt[i].x = pt[i].x * 2 + xz;
 		pt[i].y = pt[i].y * 2 + yz;
 	}

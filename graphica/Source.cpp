@@ -20,16 +20,11 @@ int main()
 	int amountOfEnemyBolls;
 	cout << "Введите количество вражеских шаров: ";
 	cin >> amountOfEnemyBolls;
-
-	Sphere sp(0, 0, 10);
-	Sphere::VisSphere(&sp, 1);
-
-	Matrix mt;
-
 	Gun gun(0, 0, wid/2, heg/2);
 
 	Boll boll(1);
 	boll.enemyBollSpawn(amountOfEnemyBolls);
+
 
 	Graphics::Osi();
 
