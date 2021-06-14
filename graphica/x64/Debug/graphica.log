@@ -2,6 +2,8 @@
 C:\Users\andro\Documents\GitHub\summerPractice\graphica\Matrix.h(61,13): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\andro\Documents\GitHub\summerPractice\graphica\Matrix.h(61,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
 C:\Users\andro\Documents\GitHub\summerPractice\graphica\Matrix.h(61,36): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(80,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
-C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(81,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(85,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(86,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(121,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(122,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
   graphica.vcxproj -> C:\Users\andro\Documents\GitHub\summerPractice\graphica\x64\Debug\graphica.exe

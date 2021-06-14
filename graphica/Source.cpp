@@ -20,15 +20,14 @@ int main()
 	int amountOfEnemyBolls;
 	cout << "Введите количество вражеских шаров: ";
 	cin >> amountOfEnemyBolls;
-	Gun gun(0, 0, wid/2, heg/2);
 
-	Boll boll(1);
-	boll.enemyBollSpawn(amountOfEnemyBolls);
+	Boll boll(amountOfEnemyBolls);
+	Gun gun(0, &boll, amountOfEnemyBolls);
+	gun.Shot(20, &boll, amountOfEnemyBolls);
 
 
 	Graphics::Osi();
 
 
-	cin.get();
 	return 0;
 }

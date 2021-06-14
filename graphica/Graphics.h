@@ -26,8 +26,8 @@ public:
 	static void Line(int, int, int, int); //Нарисовать линию (x1,y1 - начальная точка, x2,y2 -  конечная точка)
 	static void Point(int, int, COLORREF); //Нарисовать пиксел (x,y - координаты точки (в пикселах), цвет)
 	static void Osi(); //Нарисовать оси
-	static int GetWid() { return wid; } //Получить ширину клиентской области окна в пикселах
-	static int GetHeg() { return heg; } //Получить высоту клиентской области окна в пикселах
+	static int GetWid() { return wid+1; } //Получить ширину клиентской области окна в пикселах
+	static int GetHeg() { return heg+1; } //Получить высоту клиентской области окна в пикселах
 
 	static void InitGraphics(HWND); //Инициализировать графический объект
 	~Graphics(); //Деструктор
