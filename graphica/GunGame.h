@@ -101,9 +101,27 @@ Gun::~Gun()
 
 void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 {
-	//!!!добавить отчиску поля
+	//отчистка поля
 	Rectangle(Graphics::dc, 0, 0, Graphics::GetWid(), Graphics::GetHeg());
 
+	//!!!добавить обработку попаданий
+	double radian = (angle - 90) * 0.0174533;
+	double k = sin(radian) / cos(radian);
+	double d, r;
+	int xS, yS;
+	for (int i = 0; i < amountOfEnemyBolls; i++)
+	{
+		xS = boll->enemySphiere[i].getCenter().x;
+		yS = boll->enemySphiere[i].getCenter().y;
+		d = abs(double(xS * (-k) + yS)) / sqrt(k * k + 1);
+		r = boll->enemySphiere[i].getR();
+		if (d <= r)
+		{
+			boll->enemySphiere[i].setExist(0);
+		}
+	}
+
+	//laser
 	int xLine = 0;
 	int yLine = 0;
 	int xLineEnd = 0;
@@ -129,9 +147,6 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 	Graphics::Line(xLine, yLine, xLineEnd, yLineEnd);
 
 	Gun gun(angle, boll, amountOfEnemyBolls);
-
-
-	//!!!добавить обработку попаданий
 
 
 	Sphere::VisSphere(boll->enemySphiere, boll->amountOfEnemyBolls);

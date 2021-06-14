@@ -22,12 +22,21 @@ int main()
 	cin >> amountOfEnemyBolls;
 
 	Boll boll(amountOfEnemyBolls);
-	Gun gun(0, &boll, amountOfEnemyBolls);
-	gun.Shot(20, &boll, amountOfEnemyBolls);
+
+	while (true)
+	{
+		int angle;
+		cout << "¬ведите градус поворота: ";
+		cin >> angle;
+
+		Gun gun(0, &boll, amountOfEnemyBolls);
+		gun.Shot(angle, &boll, amountOfEnemyBolls);
 
 
-	Graphics::Osi();
+		Graphics::Osi();
 
+	}
+	
 
 	return 0;
 }

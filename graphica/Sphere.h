@@ -9,12 +9,16 @@ private:
 	POINT ctr;
 	double R;
 	bool Hit(int, int, double *);
+	bool exist = 1;
 public:
 	Sphere();
 	Sphere(int, int, double);
 	static void VisSphere(Sphere *, int);
 	COLORREF getCol(){return col;}
-	POINT getCenter(){return ctr;};
+	POINT getCenter(){return ctr;}
+	double getR(){ return R; }
+	bool getExist() { return exist; }
+	void setExist(bool a) { exist = a; }
 };
 
 
@@ -70,6 +74,7 @@ bool Sphere::Hit(int wx, int wy, double *n)
 
 void Sphere::VisSphere(Sphere *sp,int kol)
 {
+	
 	int y,x,k, dx, dy;
 	double n;
 	COLORREF col;
@@ -86,7 +91,7 @@ void Sphere::VisSphere(Sphere *sp,int kol)
 			dx = x - wid / 2;
 			for(k=0; k<kol; k++)
 			{
-				if(sp[k].Hit(dx,dy, &n) == true)  
+				if(sp[k].Hit(dx,dy, &n) == true && sp[k].getExist())  
 				{
 					col = sp[k].getCol();
 					r = (BYTE)(GetRValue(col)*n);
