@@ -22,8 +22,9 @@ int main()
 	cin >> amountOfEnemyBolls;
 
 	Boll boll(amountOfEnemyBolls);
+	Gun gun(0, &boll, amountOfEnemyBolls);
 
-	while (true)
+	while (!gun.EndOfGame(&boll, amountOfEnemyBolls))
 	{
 		int angle;
 		cout << "Введите градус поворота: ";
@@ -34,8 +35,9 @@ int main()
 
 
 		Graphics::Osi();
-
 	}
+
+	cout << "Конец игры!";
 	
 
 	return 0;

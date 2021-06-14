@@ -60,6 +60,7 @@ public:
 	Gun(int, Boll*, int);
 	~Gun();
 	void Shot(int, Boll*, int );
+	bool EndOfGame(Boll*, int);
 
 
 private:
@@ -104,7 +105,7 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 	//отчистка поля
 	Rectangle(Graphics::dc, 0, 0, Graphics::GetWid(), Graphics::GetHeg());
 
-	//!!!добавить обработку попаданий
+	//обработка попаданий
 	double radian = (angle - 90) * 0.0174533;
 	double k = sin(radian) / cos(radian);
 	double d, r;
@@ -115,9 +116,34 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 		yS = boll->enemySphiere[i].getCenter().y;
 		d = abs(double(xS * (-k) + yS)) / sqrt(k * k + 1);
 		r = boll->enemySphiere[i].getR();
-		if (d <= r)
+
+		
+		if (d <= r )
 		{
-			boll->enemySphiere[i].setExist(0);
+			//0-90
+			if (angle % 360 >= 0 && angle % 360 < 90 
+				&& boll->enemySphiere[i].getCenter().x > 0 && boll->enemySphiere[i].getCenter().y < 0)
+			{
+				boll->enemySphiere[i].setExist(0);
+			}
+			//90-180
+			else if (angle % 360 >= 90 && angle % 360 < 180
+				&& boll->enemySphiere[i].getCenter().x > 0 && boll->enemySphiere[i].getCenter().y > 0)
+			{
+				boll->enemySphiere[i].setExist(0);
+			}
+			//180 - 270
+			else if (angle % 360 >= 180 && angle % 360 < 270
+				&& boll->enemySphiere[i].getCenter().x < 0 && boll->enemySphiere[i].getCenter().y > 0)
+			{
+				boll->enemySphiere[i].setExist(0);
+			}
+			//270 - 360
+			else if (angle % 360 >= 270 && angle % 360 < 360
+				&& boll->enemySphiere[i].getCenter().x < 0 && boll->enemySphiere[i].getCenter().y < 0)
+			{
+				boll->enemySphiere[i].setExist(0);
+			}
 		}
 	}
 
@@ -151,6 +177,17 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 
 	Sphere::VisSphere(boll->enemySphiere, boll->amountOfEnemyBolls);
 	Graphics::Osi();
+}
+
+bool Gun::EndOfGame(Boll* boll, int amountOfEnemyBolls) {
+	for (int i = 0; i < amountOfEnemyBolls; i++)
+	{
+		if (boll->enemySphiere[i].getExist())
+		{
+			return 0;
+		}
+		return 1;
+	}
 }
 
 ////////////////////////////////////////////////////
