@@ -140,7 +140,7 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 	yLineEnd = v[1];
 
 	xLineEnd = xLineEnd + xz;
-	yLineEnd = yLineEnd + xz;
+	yLineEnd = yLineEnd + yz;
 
 
 	Graphics:: Set_pen(RGB(255, 0, 0), 1);
