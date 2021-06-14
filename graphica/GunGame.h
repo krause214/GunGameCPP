@@ -180,12 +180,16 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 }
 
 bool Gun::EndOfGame(Boll* boll, int amountOfEnemyBolls) {
+	int k = 0;
 	for (int i = 0; i < amountOfEnemyBolls; i++)
 	{
 		if (boll->enemySphiere[i].getExist())
 		{
+			k++;
 			return 0;
 		}
+	}
+	if (k == 0) {
 		return 1;
 	}
 }
