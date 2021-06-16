@@ -9,7 +9,7 @@ private:
 	POINT ctr;
 	double R;
 	bool Hit(int, int, double *);
-	bool exist = 1;
+	bool exist /*= 1*/;
 public:
 	Sphere();
 	Sphere(int, int, double);
@@ -19,33 +19,39 @@ public:
 	double getR(){ return R; }
 	bool getExist() { return exist; }
 	void setExist(bool a) { exist = a; }
+	void delSphere();
 };
 
 
 Sphere::Sphere()
 {
+	exist = 1;
 	BYTE r, g, b;
 	r = rand() % 255;
 	g = rand() % 255;
 	b = rand() % 255;
 	col = RGB(r, g, b);
-
+	R = 40 + rand() % 20;
 	int wid = Graphics::GetWid();
 	int heg = Graphics::GetHeg();
-	Sleep(10);
-	ctr.x = rand()%(wid+1) - wid/2;
-	Sleep(10);
-	ctr.y = rand()%(heg+1) - heg/2;
+	do
+	{
+		Sleep(10);
+		ctr.x = rand() % (wid - 2 * (int)R - 6) - wid / 2 + R + 3;
+		Sleep(10);
+		ctr.y = rand() % (heg - 2 * (int)R - 6) - heg / 2 + R + 3;
+	} 	while (/*ctr.x == 0 || ctr.y == 0 || */(abs(ctr.x) < 150 && abs(ctr.y) < 150) || (abs(ctr.x) < R || abs(ctr.y) < R));
 
-	R = 20. + rand() % 50;
+	
 }
 
 Sphere::Sphere(int x, int y, double rad)
 {
+	exist = 1;
 	BYTE r, g, b;
-	r = rand() % 255;
-	g = rand() % 255;
-	b = rand() % 255;
+	r = rand() % 255 + 1;
+	g = rand() % 255 + 1;
+	b = rand() % 255 + 1;
 	col = RGB(r, g, b);
 
 	int wid = Graphics::GetWid();
@@ -102,6 +108,19 @@ void Sphere::VisSphere(Sphere *sp,int kol)
 			}
 		}
 	}
+}
+
+//закрашивание сферы чёрным цветом
+void Sphere :: delSphere()
+{
+	int wid = Graphics::GetWid()/2;
+	int heg = Graphics::GetHeg()/2;
+	POINT c = this ->getCenter();
+	double R = this->getR();
+	Graphics::Set_pen(RGB(0, 0, 0), 3);
+	Graphics::Set_brush(RGB(0, 0, 0), 0);
+	Ellipse(Graphics::dc, c.x - R + wid, c.y - R + heg, c.x + R + wid, c.y + R + heg);
+
 }
 
 #endif SPHERE_H

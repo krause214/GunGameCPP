@@ -15,30 +15,45 @@ public:
 	~Boll();
 	friend class Gun;
 	int getAmountOfEnemyBolls();
+	void VisBoll();
 
 private:
-	int bollSize = 0;
+	//int bollSize = 0;
 	Sphere *enemySphiere;
 	int amountOfEnemyBolls;
 
 };
+
+void Boll :: VisBoll()
+{
+	Sphere::VisSphere(this ->enemySphiere, this ->amountOfEnemyBolls);
+}
 //спавн вражеских шаров
 Boll::Boll(int amount) {
 	amountOfEnemyBolls = amount;
 	Sphere* enemy = new Sphere[amount];
-	int j = 0;
-	int x = rand() % Graphics::GetWid() - Graphics::GetWid() / 2;
-	int y = rand() % Graphics::GetHeg() - Graphics::GetHeg() / 2;
-	int rad = 10 + rand() % 40;
-	for (int i = 0; i < amount; i++)
-	{
-		while ((x < Graphics::GetWid() + 100 && x > Graphics::GetWid() - 100)
-			|| (y < Graphics::GetHeg() + 100 && y > Graphics::GetHeg() - 100)) {
-			x = rand() % Graphics::GetWid() - Graphics::GetWid() / 2;
-			y = rand() % Graphics::GetHeg() - Graphics::GetHeg() / 2;
-		}
-		enemy[j] = Sphere(x, y, rad);
-	}
+	//int j = 0;
+	//int wid = Graphics::GetWid();
+	//int heg = Graphics::GetHeg();
+	//int x = rand() % wid - wid / 2;
+	//int y = rand() % heg - heg / 2;
+	//int rad = 40 + rand() % 10;
+	//for (int i = 0; i < amount; i++)
+	//{
+	//	do
+	//	{
+	//		x = rand() % wid - wid / 2 + wid;
+	//		y = rand() % heg - heg / 2 + heg;
+	//		cout << x << " " << y << endl;
+	//	} while ((x == 0 || y == 0));
+
+	//	//while ((x < wid/2 && x >  -wid/2)
+	//	//	&& (y < heg/2 && y >  -heg/2)) {
+	//	//	x = rand() % wid - wid / 2;
+	//	//	y = rand() % heg - heg / 2;
+	//	//}
+	//	enemy[j] = Sphere(x, y, rad);
+	//}
 	enemySphiere = enemy;
 
 	Sphere::VisSphere(enemySphiere, amount);
@@ -46,6 +61,7 @@ Boll::Boll(int amount) {
 
 Boll::~Boll()
 {
+	free(enemySphiere);
 }
 
 
@@ -57,8 +73,8 @@ int Boll::getAmountOfEnemyBolls() {
 class Gun
 {
 public:
-	Gun(int, Boll*, int);
-	~Gun();
+	Gun(int, int);
+	//~Gun();
 	void Shot(int, Boll*, int );
 	bool EndOfGame(Boll*, int);
 
@@ -71,9 +87,8 @@ private:
 };
 
 //спавн пушки
-Gun::Gun(int angle, Boll *boll, int amountOfEnemyBolls)
+Gun::Gun(int angle, int rgb)
 {
-
 	Vector v;
 	Matrix rote;
 	rote.Rotate(angle);
@@ -89,21 +104,28 @@ Gun::Gun(int angle, Boll *boll, int amountOfEnemyBolls)
 		pt[i].x = pt[i].x * 2 + xz;
 		pt[i].y = pt[i].y * 2 + yz;
 	}
-
-	Graphics::Set_pen(RGB(0, 255, 0), 3);
-	Graphics::Set_brush(RGB(0, 255, 0), 0);
+	if (rgb == 0)
+	{
+		Graphics::Set_pen(RGB(0, 0, 0), 3);
+		Graphics::Set_brush(RGB(0, 0, 0), 0);
+	}
+	else
+	{
+		Graphics::Set_pen(RGB(0, 255, 0), 3);
+		Graphics::Set_brush(RGB(0, 255, 0), 0);
+	}
 	Polygon(Graphics::dc, pt, 7);
 
 }
 
-Gun::~Gun()
-{
-}
+//Gun::~Gun()
+//{
+//}
 
 void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 {
 	//отчистка поля
-	Rectangle(Graphics::dc, 0, 0, Graphics::GetWid(), Graphics::GetHeg());
+	//Rectangle(Graphics::dc, 0, 0, Graphics::GetWid(), Graphics::GetHeg());
 
 	//обработка попаданий
 	double radian = (angle - 90) * 0.0174533;
@@ -112,6 +134,8 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 	int xS, yS;
 	for (int i = 0; i < amountOfEnemyBolls; i++)
 	{
+		if (boll->enemySphiere[i].getExist() == 0)
+			continue;
 		xS = boll->enemySphiere[i].getCenter().x;
 		yS = boll->enemySphiere[i].getCenter().y;
 		d = abs(double(xS * (-k) + yS)) / sqrt(k * k + 1);
@@ -125,24 +149,28 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 				&& boll->enemySphiere[i].getCenter().x > 0 && boll->enemySphiere[i].getCenter().y < 0)
 			{
 				boll->enemySphiere[i].setExist(0);
+				boll->enemySphiere[i].delSphere();
 			}
 			//90-180
 			else if (angle % 360 >= 90 && angle % 360 < 180
 				&& boll->enemySphiere[i].getCenter().x > 0 && boll->enemySphiere[i].getCenter().y > 0)
 			{
 				boll->enemySphiere[i].setExist(0);
+				boll->enemySphiere[i].delSphere();
 			}
 			//180 - 270
 			else if (angle % 360 >= 180 && angle % 360 < 270
 				&& boll->enemySphiere[i].getCenter().x < 0 && boll->enemySphiere[i].getCenter().y > 0)
 			{
 				boll->enemySphiere[i].setExist(0);
+				boll->enemySphiere[i].delSphere();
 			}
 			//270 - 360
 			else if (angle % 360 >= 270 && angle % 360 < 360
 				&& boll->enemySphiere[i].getCenter().x < 0 && boll->enemySphiere[i].getCenter().y < 0)
 			{
 				boll->enemySphiere[i].setExist(0);
+				boll->enemySphiere[i].delSphere();
 			}
 		}
 	}
@@ -172,11 +200,16 @@ void Gun::Shot(int angle, Boll* boll, int amountOfEnemyBolls)
 	Graphics:: Set_pen(RGB(255, 0, 0), 1);
 	Graphics::Line(xLine, yLine, xLineEnd, yLineEnd);
 
-	Gun gun(angle, boll, amountOfEnemyBolls);
+	{Gun gun(angle, 1); }
 
+	//закрашивание выстрела
+	Sleep(100);
+	Graphics::Set_pen(RGB(0, 0, 0), 1);
+	Graphics::Line(xLine, yLine, xLineEnd, yLineEnd);
+	Gun gun(angle, 1);
 
-	Sphere::VisSphere(boll->enemySphiere, boll->amountOfEnemyBolls);
-	Graphics::Osi();
+	//Sphere::VisSphere(boll->enemySphiere, boll->amountOfEnemyBolls);
+	//Graphics::Osi();
 }
 
 bool Gun::EndOfGame(Boll* boll, int amountOfEnemyBolls) {
