@@ -1,16 +1,16 @@
 ﻿  Source.cpp
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Matrix.h(61,13): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Matrix.h(61,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Matrix.h(61,36): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Sphere.h(40,57): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Sphere.h(42,57): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Sphere.h(122,77): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Sphere.h(122,62): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Sphere.h(122,47): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\Sphere.h(122,32): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\GunGame.h(101,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\GunGame.h(102,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\GunGame.h(193,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\GunGame.h(194,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\GunGame.h(228): warning C4715: Gun::EndOfGame: значение возвращается не при всех путях выполнения
-  graphica.vcxproj -> C:\Users\Глеб\Documents\GitHub\summerPractice\graphica\x64\Debug\graphica.exe
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Matrix.h(61,13): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Matrix.h(61,25): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Matrix.h(61,36): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Sphere.h(40,57): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Sphere.h(42,57): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Sphere.h(122,77): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Sphere.h(122,62): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Sphere.h(122,47): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\Sphere.h(122,32): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(101,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(102,16): warning C4244: =: преобразование "double" в "LONG", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(193,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(194,16): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+C:\Users\andro\Documents\GitHub\summerPractice\graphica\GunGame.h(228): warning C4715: Gun::EndOfGame: значение возвращается не при всех путях выполнения
+  graphica.vcxproj -> C:\Users\andro\Documents\GitHub\summerPractice\graphica\x64\Debug\graphica.exe
